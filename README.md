@@ -176,7 +176,7 @@ Contributions welcome. File issues for bugs or feature requests. PRs welcome for
 
 ## Credits
 
-Created by **Steve Becht-Buss** in collaboration with **Anthropic Claude**.
+Created by **HighDesertWizard** in collaboration with **Anthropic Claude**.
 
 Review process: Four rounds of structured red-team review by GPT, Gemini, Grok, Claude Sonnet, and Claude Haiku.
 
