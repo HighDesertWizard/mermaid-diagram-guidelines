@@ -152,7 +152,7 @@ Also works by pasting `SKILL.md` into any LLM's system prompt or project instruc
 
 ## Version History
 
-MDG was developed over 12 months (v0.38–v1.0), beginning as informal notes about Mermaid rendering quirks and evolving into a comprehensive standard through iterative testing and refinement.
+MDG was developed over nearly a year (v0.38–v1.0), beginning as informal notes about Mermaid rendering quirks and evolving into a comprehensive standard through iterative testing and refinement.
 
 The v1.0 release was validated through 4 rounds of structured multi-LLM peer review with 5 reviewer models (GPT, Gemini, Grok, Claude Sonnet, and Claude Haiku), each reviewing independently and surfacing issues across syntax correctness, layout reliability, documentation clarity, and coverage gaps.
 

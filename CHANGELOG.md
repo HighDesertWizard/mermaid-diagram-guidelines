@@ -20,15 +20,15 @@ All notable changes to the Mermaid Diagram Guidelines (MDG) are documented here.
 
 ## [0.49] — 2026-04-07
 
-Round 3 micro-fixes: RAG triple example updated to convention-compliant IDs (R3-P1). Frontmatter description corrected (R3-P2). Technique 6 duplicate sentence removed (R3-P3). Safe Fallback title-wrapper clarification (R3-P5).
+Round 3 micro-fixes: RAG triple example updated to convention-compliant IDs. Frontmatter description corrected. Technique 6 duplicate sentence removed. Safe Fallback title-wrapper clarification added.
 
 ## [0.48] — 2026-04-07
 
-Round 2 Tier A (9 fixes) + Tier B (7 additions): troubleshooting section, safe fallback default, routing enforcement in decision tree, asymmetric composite example, ELK tightening, hub-spoke scale threshold, Quick Rule for cross-boundary edges.
+Round 2 review (16 changes): added troubleshooting section, safe fallback default, routing enforcement in decision tree, asymmetric composite example, ELK guidance tightened, hub-spoke scale threshold, Quick Rule for cross-boundary edges. Plus 9 targeted fixes across existing content.
 
 ## [0.47] — 2026-04-07
 
-Tier A: Structural reorganization. Tier B: Non-flowchart depth (sequence, ERD, state, Gantt, mindmap, pie, class diagrams). Tier C: Modular split architecture + ELK layout engine reference.
+Structural reorganization. Added depth for non-flowchart diagram types (sequence, ERD, state, Gantt, mindmap, pie, class diagrams). ELK layout engine reference added.
 
 ## [0.46] — 2026-04-06
 
