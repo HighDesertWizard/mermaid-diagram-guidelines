@@ -17,7 +17,8 @@ MDG fixes all of this.
 
 ---
 
-## Why Diagrams Matter: The Three Pillars of Modern Intelligence
+<details>
+<summary><h2>Why Diagrams Matter: The Three Pillars of Modern Intelligence</h2></summary>
 
 Psychologist James Flynn spent decades studying a remarkable phenomenon: IQ scores across the industrialized world rose steadily throughout the 20th century — roughly 3 points per decade. This wasn't because people were born smarter. The gains were overwhelmingly concentrated in abstract reasoning, not vocabulary or arithmetic.
 
@@ -115,6 +116,8 @@ style Synthesis fill:#F8F5FF,stroke:#8030C8,stroke-width:2px,color:#1a1a1a,font-
 ```
 
 > *See the raw source: [`examples/flynn-three-pillars.mermaid`](examples/flynn-three-pillars.mermaid)*
+
+</details>
 
 ---
 
