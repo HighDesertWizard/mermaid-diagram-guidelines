@@ -153,11 +153,11 @@ Before delivering, verify:
 
 | Version | Date | Summary |
 |---------|------|---------|
-| 1.0 | 2026-04-07 | **Public release.** Single-file consolidation. Four rounds of multi-LLM review (GPT, Gemini, Grok, Sonnet, Haiku). No breaking changes from v0.49. |
-| 0.49 | 2026-04-07 | **Round 3 micro-fixes:** RAG triple example updated to convention-compliant IDs. Frontmatter description corrected. Technique 6 duplicate sentence removed. Safe Fallback title-wrapper clarification added. |
-| 0.48 | 2026-04-07 | Round 2 review (16 changes): troubleshooting section, safe fallback default, routing enforcement, asymmetric composite example, ELK tightening, hub-spoke threshold, Quick Rule. Plus 9 targeted fixes. |
-| 0.47 | 2026-04-07 | Structural reorganization. Non-flowchart depth (sequence, ERD, state, Gantt, mindmap, pie, class). ELK layout engine reference. |
-| 0.46 | 2026-04-06 | Principle 3 comprehensive rewrite: 5 techniques for subgraph arrangement including Grid Layout. |
+| 1.0 | 2026-03-07 | **Public release.** Single-file consolidation. Four rounds of multi-LLM review (GPT, Gemini, Grok, Sonnet, Haiku). No breaking changes from v0.49. |
+| 0.49 | 2026-03-07 | **Round 3 micro-fixes:** RAG triple example updated to convention-compliant IDs. Frontmatter description corrected. Technique 6 duplicate sentence removed. Safe Fallback title-wrapper clarification added. |
+| 0.48 | 2026-03-07 | Round 2 review (16 changes): troubleshooting section, safe fallback default, routing enforcement, asymmetric composite example, ELK tightening, hub-spoke threshold, Quick Rule. Plus 9 targeted fixes. |
+| 0.47 | 2026-03-07 | Structural reorganization. Non-flowchart depth (sequence, ERD, state, Gantt, mindmap, pie, class). ELK layout engine reference. |
+| 0.46 | 2026-03-06 | Principle 3 comprehensive rewrite: 5 techniques for subgraph arrangement including Grid Layout. |
 | 0.45 | 2026-02-27 | Page-Fit Layout Strategy. New diagram types. |
 | 0.44 | 2025-12-04 | Advanced Layout Techniques. Invisible elements toolkit. |
 | 0.43 | 2025-11-28 | classDiagram guidance. `color:#000000` rule. |

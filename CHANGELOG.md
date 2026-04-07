@@ -2,7 +2,7 @@
 
 All notable changes to the Mermaid Diagram Guidelines (MDG) are documented here.
 
-## [1.0] — 2026-04-07
+## [1.0] — 2026-03-07
 
 **Public release.** Single-file consolidation of all MDG content into `SKILL.md`. Four rounds of structured multi-LLM peer review with five reviewer models (GPT, Gemini, Grok, Claude Sonnet, Claude Haiku). No breaking changes from v0.49.
 
@@ -18,19 +18,19 @@ All notable changes to the Mermaid Diagram Guidelines (MDG) are documented here.
 - Layout troubleshooting guide
 - ELK layout engine reference
 
-## [0.49] — 2026-04-07
+## [0.49] — 2026-03-07
 
 Round 3 micro-fixes: RAG triple example updated to convention-compliant IDs. Frontmatter description corrected. Technique 6 duplicate sentence removed. Safe Fallback title-wrapper clarification added.
 
-## [0.48] — 2026-04-07
+## [0.48] — 2026-03-07
 
 Round 2 review (16 changes): added troubleshooting section, safe fallback default, routing enforcement in decision tree, asymmetric composite example, ELK guidance tightened, hub-spoke scale threshold, Quick Rule for cross-boundary edges. Plus 9 targeted fixes across existing content.
 
-## [0.47] — 2026-04-07
+## [0.47] — 2026-03-07
 
 Structural reorganization. Added depth for non-flowchart diagram types (sequence, ERD, state, Gantt, mindmap, pie, class diagrams). ELK layout engine reference added.
 
-## [0.46] — 2026-04-06
+## [0.46] — 2026-03-06
 
 Principle 3 comprehensive rewrite: 5 techniques for subgraph arrangement including Grid Layout (Technique 5). Critical Warning section for cross-boundary edges targeting leaf nodes.
 
