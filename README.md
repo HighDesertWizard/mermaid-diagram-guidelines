@@ -21,7 +21,9 @@ MDG fixes all of this.
 
 ## Why Diagrams Matter: The Three Pillars of Modern Intelligence
 
-Psychologist James Flynn spent decades studying a remarkable phenomenon: IQ scores across the industrialized world rose steadily throughout the 20th century — roughly 3 points per decade. This wasn't because people were born smarter. The gains were overwhelmingly concentrated in abstract reasoning, not vocabulary or arithmetic.
+In the early 1980s, psychologist James Flynn discovered that IQ scores across the industrialized world had been rising steadily throughout the 20th century — roughly 3 points per decade, in every country with reliable data. The finding was so robust and so unexpected that the research community named it the **Flynn Effect**. It is one of the most replicated results in the history of psychology.
+
+The gains weren't because people were born smarter. They were overwhelmingly concentrated in abstract reasoning — not vocabulary or arithmetic. Something about modern environments was training people to think differently.
 
 In his [TED talk](https://www.ted.com/talks/james_flynn_why_our_iq_levels_are_higher_than_our_grandparents) and published research, Flynn identified three cognitive abilities that drove this rise:
 
