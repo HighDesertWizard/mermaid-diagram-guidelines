@@ -2,6 +2,8 @@
 
 **A skill file that makes LLMs dramatically better at generating Mermaid diagrams.**
 
+*For James Flynn (1934–2020), who proved that new ways of seeing produce new ways of thinking.*
+
 ---
 
 ## The Problem
@@ -115,6 +117,8 @@ style Synthesis fill:#F8F5FF,stroke:#8030C8,stroke-width:2px,color:#1a1a1a,font-
 ```
 
 > *See the raw source: [`examples/flynn-three-pillars.mermaid`](examples/flynn-three-pillars.mermaid)*
+
+**[Read more: James Flynn and the cognitive science behind MDG →](FLYNN.md)**
 
 ---
 
