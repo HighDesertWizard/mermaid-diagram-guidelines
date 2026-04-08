@@ -19,7 +19,11 @@ This skill enables creation of MDG-compliant Mermaid diagrams with consistent st
 7. First non-blank line **must** be an MDG header tag (e.g., `%%mdg:DGM:1.0%%`)
 8. If metadata unknown, ask user once, then fill in available information
 9. **Mobile limitation**: Mermaid artifacts render in artifact panel on desktop but may not work on mobile
-10. **CRITICAL for flowchart: Default to targeting subgraphs, not leaf nodes, when crossing container boundaries.** Targeting leaf nodes inside a container that uses `direction` for arrangement (a "directional container") often overrides the container's internal layout. If semantic accuracy requires targeting a specific interior node, do so — but expect possible layout instability and test carefully. (See Principle 3 Critical Warning below)
+10. **CRITICAL for flowchart: Default to targeting subgraphs, not leaf nodes, when crossing container boundaries.** Targeting leaf nodes inside a container that uses `direction` for arrangement (a "directional container") often overrides the container's internal layout. If semantic accuracy requires targeting a specific interior node, do so — but expect possible layout instability and test carefully. (See Principle 3 Critical Warning below) **Corollary: When all child subgraphs inside a container are targets, use a single edge to the parent container** (e.g., `Present --> Futures`) instead of separate edges to each child (e.g., `Present --> PathA`, `Present --> PathB`, `Present --> PathC`). Multiple edges into a container's children break the container's internal arrangement.
+11. **CRITICAL for flowchart: Every subgraph MUST have an explicit `direction` that alternates with its children.** The cross-grain chain must be unbroken at every nesting level. If the flowchart is TB, a title-wrapper subgraph must be `direction TB`, and its child subgraphs must be `direction LR`. Omitting `direction` on any intermediate subgraph breaks the layout. (See Principle 1.)
+12. **CRITICAL for flowchart: Max 4 nodes in any single horizontal chain.** A `direction LR` subgraph with 5+ nodes in a single `-->` chain produces an extremely wide, thin diagram that won't fit any medium. Break long chains into multiple stacked rows (each row a subgraph with `direction LR` containing ≤ 4 nodes). Similarly, hub-and-spoke layouts (`flowchart LR`) with >3 spokes must wrap spokes into row containers.
+13. **CRITICAL: Aspect ratio must stay between 2:1 and 1:2.** If a diagram would be wider than 2× its height (or taller than 2× its width), restructure before publishing. Common fixes: break horizontal chains into rows, wrap hub spokes into row containers, or split into multiple diagrams.
+14. **CRITICAL for flowchart: Sibling subgraphs MUST have `~~~` invisible links between them.** When a parent subgraph contains two or more child subgraphs at the same level, always add `~~~` links between them (e.g., `ChildA ~~~ ChildB ~~~ ChildC`). Do NOT rely on `direction`, external edges, or declaration order alone — renderers handle these inconsistently. The `~~~` link is the only reliable way to enforce sibling subgraph arrangement. **Exception for leaf nodes:** Do NOT add `~~~` between leaf nodes inside a subgraph when the parent subgraphs are already rank-constrained by `-->` edges — in that case, `direction LR` is sufficient and adding `~~~` can break the layout by forcing an overly wide horizontal row.
 
 ### Quick Reference: Flowchart Layout Techniques
 
@@ -112,6 +116,8 @@ If uncertain about layout technique, default to Technique 3 (stacked pipeline).
 | Direction | `TB` for docs; `LR` for slides/mobile |
 | Legend | Required if > 3 shape types OR > 2 color families |
 | Node count | Aim ≤ 60 nodes & ≤ 100 edges for flowcharts (split if needed) |
+| Horizontal chain limit | **Max 4 nodes** in a single `direction LR` chain. If more, break into multiple rows (stacked subgraphs with `direction LR` each containing ≤ 4 nodes) or switch the parent to `flowchart LR` with `direction TB` children. |
+| Aspect ratio | **Target 4:3 to 3:4.** Never exceed 2:1 (wide) or 1:2 (tall). If a draft exceeds this, restructure: break long chains into rows, wrap spokes into row containers, or split into separate diagrams. |
 | Accessibility | Font ≥ 14px mobile / 16px desktop; contrast ≥ 4.5:1 |
 | Titles | **Every diagram must have a title** — no exceptions |
 | Nesting | Limit subgraph nesting to 2 levels max (see flowchart sections below) |
@@ -133,7 +139,7 @@ Before delivering, verify:
 - [ ] **For flowchart with subgraphs**: Cross-grain direction — child subgraph `direction` is perpendicular to parent flow (or deliberately overridden with justification)
 - [ ] **For flowchart with subgraphs**: Subgraph arrangement — verify against Quick Reference table: pipeline (T2/T3), grid (T5), hub-and-spoke (T6). NO cross-boundary edges targeting leaf nodes inside directional containers (Emergency Rule 10).
 - [ ] **For flowchart with subgraphs**: Subgraph-level connections — cross-subgraph arrows target subgraphs, not interior nodes (unless a specific interior node must be identified)
-- [ ] **Aspect ratio check**: Resulting diagram fits target medium without scrolling or excessive whitespace
+- [ ] **Aspect ratio check**: Ratio stays between 2:1 and 1:2. No `direction LR` chain exceeds 4 nodes. Hub-and-spoke has ≤ 3 unwrapped spokes.
 - [ ] **For classDiagram**: Using `theme: 'base'` with proper themeVariables
 - [ ] **For classDiagram**: `lineColor` set to light value (e.g., `#AAAAAA`)
 - [ ] **For sequenceDiagram**: `title` directive present; participant count ≤ 8; using `+`/`-` activation shorthand
@@ -284,14 +290,58 @@ These two principles control diagram aspect ratio and prevent oversized diagrams
 
 ### Principle 1: Cross-Grain Direction
 
-**Rule:** When a subgraph is nested inside a parent flow, its internal `direction` should be perpendicular to the parent's flow axis.
+**Rule:** Every subgraph MUST have an explicit `direction` that is the opposite of its children's direction. The alternating cross-grain pattern must be unbroken at every nesting level — no gaps allowed.
 
 | Parent Direction | Child Subgraph Direction | Effect |
 |-----------------|-------------------------|--------|
 | `flowchart TB` or `flowchart TD` | `direction LR` inside subgraphs | Each step is a horizontal band; steps stack vertically |
 | `flowchart LR` | `direction TB` inside subgraphs | Each step is a vertical column; steps flow horizontally |
 
-**Rationale:** If parent and child share the same axis, expansion compounds — a 5-step pipeline with 3 nodes per step produces 15 vertical units of height. Cross-grain direction makes each step expand *across* the flow, not *along* it.
+**Critical: The chain must be explicit at every level.** If a title-wrapper subgraph sits between the `flowchart` declaration and the leaf subgraphs, it MUST have an explicit `direction` that continues the alternating pattern. Omitting `direction` on any intermediate subgraph breaks the chain and causes unpredictable layout.
+
+```
+flowchart TB
+    subgraph Title["My Diagram"]
+        direction TB          ← explicit, same as flowchart (contains LR children)
+        subgraph Stage1["Step 1"]
+            direction LR      ← opposite of parent (TB)
+            A["Node A"] --> B["Node B"]
+        end
+        subgraph Stage2["Step 2"]
+            direction LR      ← opposite of parent (TB)
+            C["Node C"] --> D["Node D"]
+        end
+        Stage1 --> Stage2
+    end
+```
+
+**Rationale:** If parent and child share the same axis, expansion compounds — a 5-step pipeline with 3 nodes per step produces 15 vertical units of height. Cross-grain direction makes each step expand *across* the flow, not *along* it. If any subgraph in the chain omits `direction`, renderers may fall back to defaults that break the intended layout.
+
+**Critical: Limit horizontal chain length.** Even with correct cross-grain direction, a single `direction LR` subgraph with 5+ nodes in a `-->` chain produces an extremely wide, thin layout that exceeds the 2:1 aspect ratio limit. **Max 4 nodes per horizontal chain.** For longer sequences, break into multiple stacked subgraphs:
+
+❌ **Too wide (6 nodes in one LR chain):**
+```
+subgraph Pipeline["Event Pipeline"]
+    direction LR
+    A --> B --> C --> D --> E --> F
+end
+```
+
+✅ **Wrapped into rows (max 3 per row):**
+```
+subgraph Pipeline["Event Pipeline"]
+    direction TB
+    subgraph Row1["Ingestion"]
+        direction LR
+        A --> B --> C
+    end
+    subgraph Row2["Processing"]
+        direction LR
+        D --> E --> F
+    end
+    Row1 --> Row2
+end
+```
 
 **When to Override (same-grain is acceptable):**
 - The subgraph contains a single node (direction is irrelevant)
@@ -661,7 +711,47 @@ flowchart TB
 
 **Key:** No container wrapping the spokes. The hub's edges to each spoke usually encourage equal rank placement. Use `direction TB` inside spokes to keep them narrow.
 
-**Scale threshold:** For **>5 spokes**, the layout becomes too wide for most media. Transition to a hybrid: place spokes in row containers (Technique 5 variant) with 3-4 spokes per row, stacked vertically. Or split into two hub-and-spoke diagrams (primary hub + secondary hub).
+**Scale threshold:** For **>3 spokes**, the layout becomes too wide for most media. Transition to a hybrid: place spokes in row containers (Technique 5 variant) with 2-3 spokes per row, stacked vertically. Or split into two hub-and-spoke diagrams (primary hub + secondary hub). A `flowchart LR` with 4+ spokes will exceed a 2:1 aspect ratio and fail the aspect-ratio guideline.
+
+**Row-wrapped hub-and-spoke (5 spokes):**
+```mermaid
+flowchart LR
+    Hub(("Central<br>Concept"))
+
+    subgraph Row1["Primary"]
+        direction TB
+        subgraph SpokeA["Service A"]
+            direction TB
+            A1["Step 1"] --> A2["Step 2"]
+        end
+        subgraph SpokeB["Service B"]
+            direction TB
+            B1["Step 1"] --> B2["Step 2"]
+        end
+        subgraph SpokeC["Service C"]
+            direction TB
+            C1["Step 1"] --> C2["Step 2"]
+        end
+        SpokeA ~~~ SpokeB ~~~ SpokeC
+    end
+
+    subgraph Row2["Secondary"]
+        direction TB
+        subgraph SpokeD["Service D"]
+            direction TB
+            D1["Step 1"] --> D2["Step 2"]
+        end
+        subgraph SpokeE["Service E"]
+            direction TB
+            E1["Step 1"] --> E2["Step 2"]
+        end
+        SpokeD ~~~ SpokeE
+    end
+
+    Hub --> Row1
+    Hub --> Row2
+    Row1 ~~~ Row2
+```
 
 **Asymmetric composite layouts** (e.g., 1 wide row + 2 narrow below) are a variant of Technique 5: build stacked row containers where each row may have a different number of children. Use `direction LR` on each row, `~~~` inside each row for ordering, and `Row1 --> Row2` between rows.
 
