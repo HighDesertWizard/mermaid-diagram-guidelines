@@ -143,6 +143,33 @@ Also works by pasting `SKILL.md` into any LLM's system prompt or project instruc
 
 ---
 
+## Prompt Templates
+
+MDG isn't just formatting rules — it's a thinking tool. We've created six prompt templates that use MDG to reveal different kinds of insight from any topic:
+
+| Template | What It Reveals |
+|----------|----------------|
+| **The Eight Views** | 8 diagrams of the same subject through different cognitive lenses |
+| **The Depth Ladder** | 4 diagrams from napkin sketch to gap analysis |
+| **The Evidence Spectrum** | 5 diagrams from strongest evidence FOR to strongest evidence AGAINST |
+| **The Spectrum of Understanding** | 3 diagrams: textbook → practitioner → frontier |
+| **The Cross-Domain Bridge** | Structural parallels between different fields |
+| **The Temporal Triptych** | Past, present, and branching futures |
+
+Each template includes specific worked examples across domains — from CRISPR to microservices to antibiotics.
+
+👉 **[See all Prompt Templates →](PROMPT-TEMPLATES.md)**
+
+---
+
+## Examples Gallery
+
+See MDG in action — from personal decisions and burnout to antibiotics and cybersecurity. Nine diagrams across seven domains.
+
+👉 **[View Examples Gallery →](EXAMPLES.md)**
+
+---
+
 ## How It Works
 
 - **Emergency Rules**: 10 critical syntax and visibility rules that prevent the most common failures — invisible text, broken subgraph IDs, layout explosions
