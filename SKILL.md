@@ -10,7 +10,7 @@ This skill enables creation of MDG-compliant Mermaid diagrams with consistent st
 ## Quick Start
 
 ### Emergency Rules (Always Apply)
-1. Use `<br>` for explicit line breaks inside nodes
+1. Use only `<br>` to indicate line breaks inside nodes, but only insert line breaks when absolutely needed for some known reason
 2. **CRITICAL for flowchart: Always include `color:#000000` in every classDef** — Without this, text is invisible in dark-mode rendering environments. (Flowchart only — classDiagram does NOT support `classDef`; use `themeVariables` instead.)
 3. **CRITICAL for flowchart: Apply styles to INDIVIDUAL NODES, not subgraphs** — Subgraph styling does not propagate to node text. Use `class NodeA,NodeB myStyle` for nodes. Use `style SubgraphID ...` for subgraph containers.
 4. **CRITICAL: Subgraph identifiers MUST NOT contain spaces** — use CamelCase or underscores
@@ -24,6 +24,7 @@ This skill enables creation of MDG-compliant Mermaid diagrams with consistent st
 12. **CRITICAL for flowchart: Max 4 nodes in any single horizontal chain.** A `direction LR` subgraph with 5+ nodes in a single `-->` chain produces an extremely wide, thin diagram that won't fit any medium. Break long chains into multiple stacked rows (each row a subgraph with `direction LR` containing ≤ 4 nodes). Similarly, hub-and-spoke layouts (`flowchart LR`) with >3 spokes must wrap spokes into row containers.
 13. **CRITICAL: Aspect ratio must stay between 2:1 and 1:2.** If a diagram would be wider than 2× its height (or taller than 2× its width), restructure before publishing. Common fixes: break horizontal chains into rows, wrap hub spokes into row containers, or split into multiple diagrams.
 14. **CRITICAL for flowchart: Sibling subgraphs MUST have `~~~` invisible links between them.** When a parent subgraph contains two or more child subgraphs at the same level, always add `~~~` links between them (e.g., `ChildA ~~~ ChildB ~~~ ChildC`). Do NOT rely on `direction`, external edges, or declaration order alone — renderers handle these inconsistently. The `~~~` link is the only reliable way to enforce sibling subgraph arrangement. **Exception for leaf nodes:** Do NOT add `~~~` between leaf nodes inside a subgraph when the parent subgraphs are already rank-constrained by `-->` edges — in that case, `direction LR` is sufficient and adding `~~~` can break the layout by forcing an overly wide horizontal row.
+15. **CRITICAL: Do not create a Legend Object or Subgraph.**
 
 ### Quick Reference: Flowchart Layout Techniques
 
