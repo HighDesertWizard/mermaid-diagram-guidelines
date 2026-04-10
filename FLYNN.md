@@ -69,6 +69,75 @@ This is why a well-structured diagram isn't just a communication tool. It's a **
 
 And this is why MDG exists. When an LLM generates a broken, flat, unstyled diagram, it's not just ugly — it's failing to function as the cognitive tool it could be. MDG ensures that LLM-generated diagrams actually operationalize Flynn's three pillars: clear classification through visual encoding, navigable abstraction through hierarchy, and visible structure through spatial layout.
 
+```mermaid
+%%mdg:DGM:1.0%%
+%%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '18px' }}}%%
+
+flowchart TB
+    subgraph Title["Flynn's Three Pillars of Modern Intelligence"]
+
+        subgraph y[" "]
+            direction TB
+            Flynn["James Flynn<br>The Flynn Effect"]
+            Insight["IQ scores rose ~3 points per decade<br>across the 20th century"]
+            Flynn ~~~ Insight
+        end
+
+        subgraph Pillars["THE THREE COGNITIVE GAINS"]
+            direction LR
+            subgraph PillarOne["1 · Classification"]
+                direction TB
+                P1Def["Organizing the world<br>into abstract categories"]
+                P1Diag["Diagrams: Shape & color<br>encoding creates<br>visual categories"]
+                P1Def --> P1Diag
+            end
+            subgraph PillarTwo["2 · Abstraction"]
+                direction TB
+                P2Def["Reasoning with abstract<br>concepts & making them<br>logically consistent"]
+                P2Diag["Diagrams: Hierarchical<br>nesting makes abstract<br>relationships navigable"]
+                P2Def --> P2Diag
+            end
+            subgraph PillarThree["3 · Hypothetical Reasoning"]
+                direction TB
+                P3Def["Engaging seriously<br>with things not<br>physically present"]
+                P3Diag["Diagrams: Invisible<br>structures become visible —<br>gaps, dependencies,<br>consequences revealed"]
+                P3Def --> P3Diag
+            end
+            PillarOne ~~~ PillarTwo ~~~ PillarThree
+        end
+
+        subgraph Synthesis["SYNTHESIS"]
+            direction LR
+            Amp(("A well-structured<br>diagram is a<br>cognitive amplifier"))
+            MDG["MDG ensures LLM-generated<br>diagrams actually<br>function as one"]
+            Amp --> MDG
+        end
+
+        Insight --> Pillars
+        Pillars --> Synthesis
+    end
+
+classDef flynnNode fill:#E0E8FF,stroke:#3050C8,stroke-width:2px,color:#000000
+classDef pillarDef fill:#FFF0E0,stroke:#C88030,stroke-width:2px,color:#000000
+classDef pillarDiag fill:#E0FFE8,stroke:#30C850,stroke-width:2px,color:#000000
+classDef synthNode fill:#F0E0FF,stroke:#8030C8,stroke-width:2px,color:#000000
+classDef ampNode fill:#FFE0E8,stroke:#C83050,stroke-width:2px,color:#000000
+
+class Flynn,Insight flynnNode
+class P1Def,P2Def,P3Def pillarDef
+class P1Diag,P2Diag,P3Diag pillarDiag
+class MDG synthNode
+class Amp ampNode
+
+style Title fill:#F5F8FF,stroke:#3050C8,stroke-width:3px,color:#1a1a1a,font-weight:bold
+style y fill:transparent,stroke:transparent,stroke-width:0px
+style Pillars fill:#FFFAF5,stroke:#C88030,stroke-width:2px,color:#1a1a1a,font-weight:bold
+style PillarOne fill:#FFF8F0,stroke:#C88030,stroke-width:1px,color:#1a1a1a,font-weight:bold
+style PillarTwo fill:#FFF8F0,stroke:#C88030,stroke-width:1px,color:#1a1a1a,font-weight:bold
+style PillarThree fill:#FFF8F0,stroke:#C88030,stroke-width:1px,color:#1a1a1a,font-weight:bold
+style Synthesis fill:#F8F5FF,stroke:#8030C8,stroke-width:2px,color:#1a1a1a,font-weight:bold
+```
+
 ## His Legacy
 
 James Flynn was born in Washington, D.C. in 1934. He emigrated to New Zealand in 1963 and spent the rest of his career at the University of Otago in Dunedin, where he served as Foundation Professor of Political Studies and later Emeritus Professor. He was elected a Fellow of the Royal Society of New Zealand and received an honorary doctorate from the University of Otago in 2010.
