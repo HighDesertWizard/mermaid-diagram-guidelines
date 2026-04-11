@@ -191,25 +191,41 @@ From Fleming's discovery through the golden age to the current crisis — and th
 
 flowchart TB
     subgraph Past["HOW WE GOT HERE (1928–2000)"]
-        direction LR
-        H1["Fleming discovers<br>penicillin (1928)"]
-        H2["Golden age of<br>discovery (1940s–1960s)"]
-        H3["Pharma exits antibiotic<br>R&D — low ROI"]
-        H4["Resistance spreads via<br>agricultural overuse"]
-        H5["Discovery void: no new<br>antibiotic classes<br>since 1987"]
-        H1 --> H2 --> H3 --> H4 --> H5
+        direction TB
+        subgraph PastRow1[" "]
+            direction LR
+            H1["Fleming discovers<br>penicillin (1928)"]
+            H2["Golden age of<br>discovery (1940s–1960s)"]
+            H3["Pharma exits antibiotic<br>R&D — low ROI"]
+            H1 --> H2 --> H3
+        end
+        subgraph PastRow2[" "]
+            direction LR
+            H4["Resistance spreads via<br>agricultural overuse"]
+            H5["Discovery void: no new<br>antibiotic classes<br>since 1987"]
+            H4 --> H5
+        end
+        PastRow1 --> PastRow2
     end
 
     subgraph Present["WHERE WE ARE NOW"]
-        direction LR
-        W1["WHO priority<br>pathogen list"]
-        W2["Last-resort drugs<br>losing effectiveness"]
-        W3["1.27M deaths/year from<br>resistant infections<br>(Lancet 2022)"]
-        W4["Market failure for<br>new development"]
-        W5["Revival: phage therapy,<br>antimicrobial peptides,<br>CRISPR approaches"]
+        direction TB
+        subgraph PresentRow1[" "]
+            direction LR
+            W1["WHO priority<br>pathogen list"]
+            W2["Last-resort drugs<br>losing effectiveness"]
+            W3["1.27M deaths/year from<br>resistant infections<br>(Lancet 2022)"]
+        end
+        subgraph PresentRow2[" "]
+            direction LR
+            W4["Market failure for<br>new development"]
+            W5["Revival: phage therapy,<br>antimicrobial peptides,<br>CRISPR approaches"]
+        end
+        PresentRow1 ~~~ PresentRow2
     end
 
     subgraph Futures["BRANCHING FUTURES"]
+        direction LR
         subgraph FutureA["Path A: Pipeline Restart"]
             direction TB
             FA1["Pull incentives and<br>subscription models<br>make R&D viable"]
@@ -228,12 +244,11 @@ flowchart TB
             FC2["New paradigm replaces<br>chemical antibiotics"]
             FC1 --> FC2
         end
+        FutureA ~~~ FutureB ~~~ FutureC
     end
 
     Past --> Present
-    Present --> FutureA
-    Present --> FutureB
-    Present --> FutureC
+    Present --> Futures
 
 classDef pastNode fill:#E0E8FF,stroke:#3050C8,stroke-width:2px,color:#000000
 classDef presentNode fill:#FFF0E0,stroke:#C88030,stroke-width:2px,color:#000000
@@ -253,6 +268,10 @@ style Futures fill:#FAFAFA,stroke:#555555,stroke-width:2px,color:#1a1a1a,font-we
 style FutureA fill:#F5FFF8,stroke:#30C850,stroke-width:1px,color:#1a1a1a,font-weight:bold
 style FutureB fill:#FFF5F8,stroke:#C83050,stroke-width:1px,color:#1a1a1a,font-weight:bold
 style FutureC fill:#F8F5FF,stroke:#8030C8,stroke-width:1px,color:#1a1a1a,font-weight:bold
+style PastRow1 fill:transparent,stroke:transparent,stroke-width:0px
+style PastRow2 fill:transparent,stroke:transparent,stroke-width:0px
+style PresentRow1 fill:transparent,stroke:transparent,stroke-width:0px
+style PresentRow2 fill:transparent,stroke:transparent,stroke-width:0px
 ```
 
 **What this reveals:** The "discovery void" — no new antibiotic classes since 1987 — is visually stark against the golden age that preceded it. The branching futures show this is a decision point, not a trajectory. The 1.27 million deaths figure anchors the urgency in data rather than rhetoric.
@@ -273,24 +292,39 @@ A mid-career professional taking stock — past, present, and branching futures.
 
 flowchart TB
     subgraph Past["HOW I GOT HERE"]
-        direction LR
-        P1["Chose a practical major<br>because it felt safe"]
-        P2["Early career: said yes<br>to everything, built skills<br>through volume"]
-        P3["Found a niche — where<br>what I'm good at meets<br>what people pay for"]
-        P4["Accumulated: mortgage,<br>family, identity tied to role,<br>expertise deep but narrow"]
-        P5["Trade-offs I made without<br>realizing they were trade-offs"]
+        direction TB
+        subgraph PastRow1[" "]
+            direction LR
+            P1["Chose a practical major<br>because it felt safe"]
+            P2["Early career: said yes<br>to everything, built skills<br>through volume"]
+            P3["Found a niche — where<br>what I'm good at meets<br>what people pay for"]
+        end
+        subgraph PastRow2[" "]
+            direction LR
+            P4["Accumulated: mortgage,<br>family, identity tied to role,<br>expertise deep but narrow"]
+            P5["Trade-offs I made without<br>realizing they were trade-offs"]
+        end
+        PastRow1 ~~~ PastRow2
     end
 
     subgraph Present["WHERE I AM NOW"]
-        direction LR
-        N1["Competent but not growing —<br>learning curve flattened<br>years ago"]
-        N2["Financial stability<br>but time scarcity —<br>things never slow down"]
-        N3["Relationships maintained<br>but not deepened —<br>connection on autopilot"]
-        N4["A quiet question that<br>surfaces in odd moments:<br>Is this it?"]
-        N5["Health signals I'm<br>ignoring because<br>they're not urgent yet"]
+        direction TB
+        subgraph PresentRow1[" "]
+            direction LR
+            N1["Competent but not growing —<br>learning curve flattened<br>years ago"]
+            N2["Financial stability<br>but time scarcity —<br>things never slow down"]
+            N3["Relationships maintained<br>but not deepened —<br>connection on autopilot"]
+        end
+        subgraph PresentRow2[" "]
+            direction LR
+            N4["A quiet question that<br>surfaces in odd moments:<br>Is this it?"]
+            N5["Health signals I'm<br>ignoring because<br>they're not urgent yet"]
+        end
+        PresentRow1 ~~~ PresentRow2
     end
 
     subgraph Futures["WHAT COULD COME NEXT"]
+        direction LR
         subgraph PathA["Double Down"]
             direction TB
             FA1["Master current domain"]
@@ -313,13 +347,11 @@ flowchart TB
             direction TB
             FD1["The path someone who<br>knows you well would<br>suggest — that you'd<br>initially resist"]
         end
+        PathA ~~~ PathB ~~~ PathC ~~~ PathD
     end
 
     Past --> Present
-    Present --> PathA
-    Present --> PathB
-    Present --> PathC
-    Present --> PathD
+    Present --> Futures
 
 classDef pastNode fill:#E0E8FF,stroke:#3050C8,stroke-width:2px,color:#000000
 classDef presentNode fill:#FFF0E0,stroke:#C88030,stroke-width:2px,color:#000000
@@ -342,6 +374,10 @@ style PathA fill:#F5FFF8,stroke:#30C850,stroke-width:1px,color:#1a1a1a,font-weig
 style PathB fill:#F8F5FF,stroke:#8030C8,stroke-width:1px,color:#1a1a1a,font-weight:bold
 style PathC fill:#FFF5F8,stroke:#C83050,stroke-width:1px,color:#1a1a1a,font-weight:bold
 style PathD fill:#F8F8F8,stroke:#808080,stroke-width:1px,color:#1a1a1a,font-weight:bold
+style PastRow1 fill:transparent,stroke:transparent,stroke-width:0px
+style PastRow2 fill:transparent,stroke:transparent,stroke-width:0px
+style PresentRow1 fill:transparent,stroke:transparent,stroke-width:0px
+style PresentRow2 fill:transparent,stroke:transparent,stroke-width:0px
 ```
 
 **What this reveals:** The three timeframes make visible something we rarely see about our own lives: the past was shaped by decisions that felt small at the time, the present is a system not a snapshot, and the future isn't a single track. The fourth path — "the one you'd initially resist" — is often the most interesting node.
@@ -365,51 +401,53 @@ Burnout modeled as a self-reinforcing system with five subsystems and the feedba
 flowchart TB
     Hub(("THE BURNOUT CYCLE<br>A self-reinforcing system"))
 
-    subgraph Demand["1. Demand Overload"]
-        direction TB
-        D1["Work volume exceeds<br>sustainable capacity"]
-        D2["Urgent displaces important<br>every single day"]
-        D3["Each interruption costs<br>~23 min of refocus"]
-        D1 --> D2 --> D3
+    subgraph Row1[" "]
+        direction LR
+        subgraph Demand["1. Demand Overload"]
+            direction TB
+            D1["Work volume exceeds<br>sustainable capacity"]
+            D2["Urgent displaces important<br>every single day"]
+            D3["Each interruption costs<br>~23 min of refocus"]
+            D1 --> D2 --> D3
+        end
+        subgraph Recovery["2. Recovery Deficit"]
+            direction TB
+            R1["Sleep debt accumulates<br>below awareness threshold"]
+            R2["Exercise, social time,<br>creative time — first cut"]
+            R3["Rest becomes passive<br>screen time: numbs<br>but doesn't restore"]
+            R1 --> R2 --> R3
+        end
+        subgraph Identity["3. Identity Fusion"]
+            direction TB
+            I1["Self-worth couples<br>to productivity"]
+            I2["Saying no feels like<br>failing — boundaries<br>feel like weakness"]
+            I3["I'm fine becomes the<br>automatic response that<br>blocks early intervention"]
+            I1 --> I2 --> I3
+        end
+        Demand ~~~ Recovery ~~~ Identity
     end
 
-    subgraph Recovery["2. Recovery Deficit"]
-        direction TB
-        R1["Sleep debt accumulates<br>below awareness threshold"]
-        R2["Exercise, social time,<br>creative time — first cut"]
-        R3["Rest becomes passive<br>screen time: numbs<br>but doesn't restore"]
-        R1 --> R2 --> R3
+    subgraph Row2[" "]
+        direction LR
+        subgraph Silence["4. Organizational Silence"]
+            direction TB
+            O1["Systems reward visible<br>effort, not sustainable output"]
+            O2["Asking for help reads<br>as underperformance"]
+            O3["The people who burn out<br>are the ones the org<br>relies on most"]
+            O1 --> O2 --> O3
+        end
+        subgraph Narrowing["5. The Narrowing"]
+            direction TB
+            N1["Interests, relationships,<br>curiosity contract"]
+            N2["Feels like focus —<br>is actually depletion"]
+            N3["Loss of perspective makes<br>every setback existential"]
+            N1 --> N2 --> N3
+        end
+        Silence ~~~ Narrowing
     end
 
-    subgraph Identity["3. Identity Fusion"]
-        direction TB
-        I1["Self-worth couples<br>to productivity"]
-        I2["Saying no feels like<br>failing — boundaries<br>feel like weakness"]
-        I3["I'm fine becomes the<br>automatic response that<br>blocks early intervention"]
-        I1 --> I2 --> I3
-    end
-
-    subgraph Silence["4. Organizational Silence"]
-        direction TB
-        O1["Systems reward visible<br>effort, not sustainable output"]
-        O2["Asking for help reads<br>as underperformance"]
-        O3["The people who burn out<br>are the ones the org<br>relies on most"]
-        O1 --> O2 --> O3
-    end
-
-    subgraph Narrowing["5. The Narrowing"]
-        direction TB
-        N1["Interests, relationships,<br>curiosity contract"]
-        N2["Feels like focus —<br>is actually depletion"]
-        N3["Loss of perspective makes<br>every setback existential"]
-        N1 --> N2 --> N3
-    end
-
-    Hub --> Demand
-    Hub --> Recovery
-    Hub --> Identity
-    Hub --> Silence
-    Hub --> Narrowing
+    Hub --> Row1
+    Row1 --> Row2
 
     Demand <-.-> Recovery
     Recovery <-.-> Identity
@@ -432,6 +470,8 @@ class I1,I2,I3 identityNode
 class O1,O2,O3 silenceNode
 class N1,N2,N3 narrowNode
 
+style Row1 fill:transparent,stroke:transparent,stroke-width:0px
+style Row2 fill:transparent,stroke:transparent,stroke-width:0px
 style Demand fill:#FFFAF5,stroke:#C88030,stroke-width:2px,color:#1a1a1a,font-weight:bold
 style Recovery fill:#F5F8FF,stroke:#3050C8,stroke-width:2px,color:#1a1a1a,font-weight:bold
 style Identity fill:#F8F5FF,stroke:#8030C8,stroke-width:2px,color:#1a1a1a,font-weight:bold
