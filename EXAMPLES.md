@@ -215,11 +215,13 @@ flowchart TB
             W1["WHO priority<br>pathogen list"]
             W2["Last-resort drugs<br>losing effectiveness"]
             W3["1.27M deaths/year from<br>resistant infections<br>(Lancet 2022)"]
+            W1 ~~~ W2 ~~~ W3
         end
         subgraph PresentRow2[" "]
             direction LR
             W4["Market failure for<br>new development"]
             W5["Revival: phage therapy,<br>antimicrobial peptides,<br>CRISPR approaches"]
+            W4 ~~~ W5
         end
         PresentRow1 ~~~ PresentRow2
     end
@@ -298,11 +300,13 @@ flowchart TB
             P1["Chose a practical major<br>because it felt safe"]
             P2["Early career: said yes<br>to everything, built skills<br>through volume"]
             P3["Found a niche — where<br>what I'm good at meets<br>what people pay for"]
+            P1 ~~~ P2 ~~~ P3
         end
         subgraph PastRow2[" "]
             direction LR
             P4["Accumulated: mortgage,<br>family, identity tied to role,<br>expertise deep but narrow"]
             P5["Trade-offs I made without<br>realizing they were trade-offs"]
+            P4 ~~~ P5
         end
         PastRow1 ~~~ PastRow2
     end
@@ -314,11 +318,13 @@ flowchart TB
             N1["Competent but not growing —<br>learning curve flattened<br>years ago"]
             N2["Financial stability<br>but time scarcity —<br>things never slow down"]
             N3["Relationships maintained<br>but not deepened —<br>connection on autopilot"]
+            N1 ~~~ N2 ~~~ N3
         end
         subgraph PresentRow2[" "]
             direction LR
             N4["A quiet question that<br>surfaces in odd moments:<br>Is this it?"]
             N5["Health signals I'm<br>ignoring because<br>they're not urgent yet"]
+            N4 ~~~ N5
         end
         PresentRow1 ~~~ PresentRow2
     end
