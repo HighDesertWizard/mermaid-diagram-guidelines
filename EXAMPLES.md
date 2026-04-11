@@ -407,53 +407,51 @@ Burnout modeled as a self-reinforcing system with five subsystems and the feedba
 flowchart TB
     Hub(("THE BURNOUT CYCLE<br>A self-reinforcing system"))
 
-    subgraph Row1[" "]
-        direction LR
-        subgraph Demand["1. Demand Overload"]
-            direction TB
-            D1["Work volume exceeds<br>sustainable capacity"]
-            D2["Urgent displaces important<br>every single day"]
-            D3["Each interruption costs<br>~23 min of refocus"]
-            D1 --> D2 --> D3
-        end
-        subgraph Recovery["2. Recovery Deficit"]
-            direction TB
-            R1["Sleep debt accumulates<br>below awareness threshold"]
-            R2["Exercise, social time,<br>creative time — first cut"]
-            R3["Rest becomes passive<br>screen time: numbs<br>but doesn't restore"]
-            R1 --> R2 --> R3
-        end
-        subgraph Identity["3. Identity Fusion"]
-            direction TB
-            I1["Self-worth couples<br>to productivity"]
-            I2["Saying no feels like<br>failing — boundaries<br>feel like weakness"]
-            I3["I'm fine becomes the<br>automatic response that<br>blocks early intervention"]
-            I1 --> I2 --> I3
-        end
-        Demand ~~~ Recovery ~~~ Identity
+    subgraph Demand["1. Demand Overload"]
+        direction TB
+        D1["Work volume exceeds<br>sustainable capacity"]
+        D2["Urgent displaces important<br>every single day"]
+        D3["Each interruption costs<br>~23 min of refocus"]
+        D1 --> D2 --> D3
     end
 
-    subgraph Row2[" "]
-        direction LR
-        subgraph Silence["4. Organizational Silence"]
-            direction TB
-            O1["Systems reward visible<br>effort, not sustainable output"]
-            O2["Asking for help reads<br>as underperformance"]
-            O3["The people who burn out<br>are the ones the org<br>relies on most"]
-            O1 --> O2 --> O3
-        end
-        subgraph Narrowing["5. The Narrowing"]
-            direction TB
-            N1["Interests, relationships,<br>curiosity contract"]
-            N2["Feels like focus —<br>is actually depletion"]
-            N3["Loss of perspective makes<br>every setback existential"]
-            N1 --> N2 --> N3
-        end
-        Silence ~~~ Narrowing
+    subgraph Recovery["2. Recovery Deficit"]
+        direction TB
+        R1["Sleep debt accumulates<br>below awareness threshold"]
+        R2["Exercise, social time,<br>creative time — first cut"]
+        R3["Rest becomes passive<br>screen time: numbs<br>but doesn't restore"]
+        R1 --> R2 --> R3
     end
 
-    Hub --> Row1
-    Row1 --> Row2
+    subgraph Identity["3. Identity Fusion"]
+        direction TB
+        I1["Self-worth couples<br>to productivity"]
+        I2["Saying no feels like<br>failing — boundaries<br>feel like weakness"]
+        I3["I'm fine becomes the<br>automatic response that<br>blocks early intervention"]
+        I1 --> I2 --> I3
+    end
+
+    subgraph Silence["4. Organizational Silence"]
+        direction TB
+        O1["Systems reward visible<br>effort, not sustainable output"]
+        O2["Asking for help reads<br>as underperformance"]
+        O3["The people who burn out<br>are the ones the org<br>relies on most"]
+        O1 --> O2 --> O3
+    end
+
+    subgraph Narrowing["5. The Narrowing"]
+        direction TB
+        N1["Interests, relationships,<br>curiosity contract"]
+        N2["Feels like focus —<br>is actually depletion"]
+        N3["Loss of perspective makes<br>every setback existential"]
+        N1 --> N2 --> N3
+    end
+
+    Hub --> Demand
+    Hub --> Recovery
+    Hub --> Identity
+    Hub --> Silence
+    Hub --> Narrowing
 
     Demand <-.-> Recovery
     Recovery <-.-> Identity
@@ -476,8 +474,6 @@ class I1,I2,I3 identityNode
 class O1,O2,O3 silenceNode
 class N1,N2,N3 narrowNode
 
-style Row1 fill:transparent,stroke:transparent,stroke-width:0px
-style Row2 fill:transparent,stroke:transparent,stroke-width:0px
 style Demand fill:#FFFAF5,stroke:#C88030,stroke-width:2px,color:#1a1a1a,font-weight:bold
 style Recovery fill:#F5F8FF,stroke:#3050C8,stroke-width:2px,color:#1a1a1a,font-weight:bold
 style Identity fill:#F8F5FF,stroke:#8030C8,stroke-width:2px,color:#1a1a1a,font-weight:bold
