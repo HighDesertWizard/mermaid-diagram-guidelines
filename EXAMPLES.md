@@ -604,6 +604,7 @@ flowchart TB
             I5{{"Pattern Recognition<br>I've been here before.<br>The feared thing<br>didn't happen."}}
             I1 --> I2 --> I3 --> I4 --> I5
         end
+        Cycle ~~~ Interventions
     end
 
 classDef cycleNode fill:#E0E8FF,stroke:#3050C8,stroke-width:2px,color:#000000
